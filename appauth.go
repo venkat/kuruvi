@@ -12,16 +12,16 @@ import (
 	"strconv"
 )
 
-type AppAuth struct {
+type appAuth struct {
 	*Auth
 	bearerToken string
 }
 
-func NewAppAuth(key, secret string) *AppAuth {
-	return &AppAuth{Auth: &Auth{ConsumerKey: key, ConsumerSecret: secret}}
+func newAppAuth(key, secret string) *appAuth {
+	return &appAuth{Auth: &Auth{ConsumerKey: key, ConsumerSecret: secret}}
 }
 
-func (a *AppAuth) GetBearerToken() {
+func (a *appAuth) getBearerToken() {
 	client := &http.Client{}
 	//Step 1: Encode consumer key and secret
 	encodedKeySecret := b64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s",
@@ -63,9 +63,9 @@ func (a *AppAuth) GetBearerToken() {
 	a.bearerToken = b.AccessToken
 }
 
-func (a *AppAuth) SetAuthHeader(r *http.Request) {
+func (a *appAuth) setAuthHeader(r *http.Request) {
 	if a.bearerToken == "" {
-		a.GetBearerToken()
+		a.getBearerToken()
 	}
 
 	//Step 3: Authenticate API requests with the bearer token
@@ -75,6 +75,6 @@ func (a *AppAuth) SetAuthHeader(r *http.Request) {
 		fmt.Sprintf("Bearer %s", a.bearerToken))
 }
 
-func (a *AppAuth) GetAuthType() int {
+func (a *appAuth) getAuthType() int {
 	return App
 }

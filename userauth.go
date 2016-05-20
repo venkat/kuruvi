@@ -1,18 +1,19 @@
 package kuruvi
 
 import (
-	"github.com/garyburd/go-oauth/oauth"
 	"log"
 	"net/http"
+
+	"github.com/garyburd/go-oauth/oauth"
 )
 
-type UserAuth struct {
+type userAuth struct {
 	*Auth
 	oauthClient oauth.Client
 }
 
-func NewUserAuth(consumerKey, consumerSecret, accessTokenKey, accessTokenSecret string) *UserAuth {
-	u := &UserAuth{Auth: &Auth{
+func newUserAuth(consumerKey, consumerSecret, accessTokenKey, accessTokenSecret string) *userAuth {
+	u := &userAuth{Auth: &Auth{
 		ConsumerKey:       consumerKey,
 		ConsumerSecret:    consumerSecret,
 		AccessTokenKey:    accessTokenKey,
@@ -28,7 +29,7 @@ func NewUserAuth(consumerKey, consumerSecret, accessTokenKey, accessTokenSecret 
 	return u
 }
 
-func (u *UserAuth) SetAuthHeader(req *http.Request) {
+func (u *userAuth) setAuthHeader(req *http.Request) {
 	u.oauthClient.Credentials.Token = u.ConsumerKey
 	u.oauthClient.Credentials.Secret = u.ConsumerSecret
 	credentials := &oauth.Credentials{Token: u.AccessTokenKey, Secret: u.AccessTokenSecret}
@@ -38,6 +39,6 @@ func (u *UserAuth) SetAuthHeader(req *http.Request) {
 	}
 }
 
-func (u *UserAuth) GetAuthType() int {
+func (u *userAuth) getAuthType() int {
 	return User
 }
