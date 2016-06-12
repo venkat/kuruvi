@@ -2,7 +2,7 @@
 >anymore. That information is now in a native struct and SetupKuruvi is
 >updated to have no rateLimits parameter.
 
-Kuruvi is a go package that is a simple wrapper for the GET endpoints of Twitter's API.[Package Documentation](https://godoc.org/github.com/venkat/kuruvi).
+Kuruvi is a go package that is a simple wrapper for the GET endpoints of Twitter's API ([Package Documentation](https://godoc.org/github.com/venkat/kuruvi)).
 
 Kuruvi takes care of two things:
 
