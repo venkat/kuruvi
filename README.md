@@ -49,10 +49,6 @@ func getFile(fileName string) *os.File {
 
 func main() {
 
-        //rate_limits.json has the JSON formatted per-endpoint rate limit info.
-        //given by Twitter at https://dev.twitter.com/rest/public/rate-limits
-        ratesFile := getFile("rate_limits.json")
-
         //auth.json contains the authentication tokens you get from Twitter's
         //Application Management portal - apps.twitter.com
         //Checkout template_auth.json for the format
@@ -62,13 +58,13 @@ func main() {
         //adding an extra minute to avoid edge cases with twitter rolling over its time window
         window := 15*time.Minute + 1*time.Minute
 
-        //Setup the API client with the ratelimit, window, auth information
+        //Setup the API client with the ratelimit window and auth information
         //The last parameter specifies what kind of authentication to use
         //It should be one of:
         //UseAppAuth - only use App Auth (and related rate limiting)
         //UseUserAuth - only use User Auth (and related rate limiting)
         //UseBoth - mix App Auth and User Auth (combining the rate limit quota for App and User auth)
-        k := kuruvi.SetupKuruvi(kuruvi.GetRateLimits(ratesFile),
+        k := kuruvi.SetupKuruvi(
                 window,
                 kuruvi.GetAuthKeys(authFile),
                 kuruvi.UseBoth)

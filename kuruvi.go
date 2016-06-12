@@ -147,13 +147,13 @@ type Kuruvi struct {
 	UserAccess *access
 }
 
-//SetupKuruvi sets up the API client with the ratelimit, window, auth information
+//SetupKuruvi sets up the API client with the ratelimit window, auth information
 //The last parameter specifies what kind of authentication to use
 //It should be one of:
 //UseAppAuth - only use App Auth (and related rate limiting)
 //UseUserAuth - only use User Auth (and related rate limiting)
 //UseBoth - mix App Auth and User Auth (combining the rate limit quota for App and User auth)
-func SetupKuruvi(rateLimits []*RateLimit, window time.Duration, authKeys *Auth, useAuthType int) *Kuruvi {
+func SetupKuruvi(window time.Duration, authKeys *Auth, useAuthType int) *Kuruvi {
 	var appAccess *access
 	var userAccess *access
 
