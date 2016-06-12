@@ -1,8 +1,8 @@
->**update - Jul 12, 2016** there is no more a dependency on having a 
->rate_limits.json file. That information is in a native struct. API client 
->initialization params in SetupKuruvi are now different to reflect that.
+>**update - Jul 12, 2016** there is no need to have a rate_limits.json file 
+>anymore. That information is now in a native struct and SetupKuruvi is
+>updated to have no rateLimits parameter.
 
-Kuruvi is a go package that is a simple wrapper for the GET endpoints of Twitter's API.
+Kuruvi is a go package that is a simple wrapper for the GET endpoints of Twitter's API.[Package Documentation](https://godoc.org/github.com/venkat/kuruvi).
 
 Kuruvi takes care of two things:
 
