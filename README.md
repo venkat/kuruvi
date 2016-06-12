@@ -1,3 +1,6 @@
+Kuruvi
+========================
+
 [![GoDoc](https://godoc.org/github.com/venkat/kuruvi?status.svg)](https://godoc.org/github.com/venkat/kuruvi)
 
 >**update - Jul 12, 2016** there is no need to have a rate_limits.json file 
