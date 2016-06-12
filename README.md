@@ -1,3 +1,6 @@
+**update - Jul 12, 2016** there is no more a dependency on having a rate_limits.json file. That information is in a native struct. API client
+initialization params in SetupKuruvi are now different to reflect that.
+
 Kuruvi is a go package that is a simple wrapper for the GET endpoints of Twitter's API.
 
 Kuruvi takes care of two things:
