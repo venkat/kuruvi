@@ -1,8 +1,10 @@
+[![GoDoc](https://godoc.org/github.com/venkat/kuruvi?status.svg)](https://godoc.org/github.com/venkat/kuruvi)
+
 >**update - Jul 12, 2016** there is no need to have a rate_limits.json file 
 >anymore. That information is now in a native struct and SetupKuruvi is
 >updated to have no rateLimits parameter.
 
-Kuruvi is a go package that is a simple wrapper for the GET endpoints of Twitter's API ([Package Documentation](https://godoc.org/github.com/venkat/kuruvi)).
+Kuruvi is a go package that is a simple wrapper for the GET endpoints of Twitter's API.
 
 Kuruvi takes care of two things:
 
